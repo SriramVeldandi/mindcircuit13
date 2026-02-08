@@ -6,7 +6,7 @@ COPY . .
 RUN mvn clean install    ## artifact -- .war
 
 ### tomcat deploy stage
-FROM tomcat
+FROM tomcat:11.0.18-jdk25-temurin-noble
 WORKDIR webapps
 COPY --from=buildstage /opt/mindcircuit13/target/*.war .
 RUN rm -rf ROOT && mv *.war ROOT.war
